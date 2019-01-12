@@ -16,11 +16,13 @@ public class StockDataTest {
     public void stockDetails() {
         RestAssured.baseURI = "https://www.quandl.com/api/v3/databases";
 
+        //Update with api_key
+        String api_key = "";
         RequestSpecification httpRequest = RestAssured.given();
 
-        Response response = httpRequest.request(Method.GET, "/WIKI/FB/?api_key=xcBsR69LBykRKhCP3zjk");
+        Response response = httpRequest.request(Method.GET, "/WIKI/FB/?api_key=" + api_key);
 
         String responseBody = response.getBody().asString();
-        System.out.println("Response Body is : " + responseBody);
+        LOG.info("Response Body is : " + responseBody);
     }
 }
