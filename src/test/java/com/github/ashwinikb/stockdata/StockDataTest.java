@@ -1,5 +1,6 @@
 package com.github.ashwinikb.stockdata;
 
+import com.github.ashwinikb.Configuration;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
@@ -14,13 +15,10 @@ public class StockDataTest {
 
     @Test
     public void stockDetails() {
-        RestAssured.baseURI = "https://www.quandl.com/api/v3/databases";
 
-        //Update with api_key
-        String api_key = "";
-        RequestSpecification httpRequest = RestAssured.given();
+        String url = Configuration.getConfigurationValue("quandlEndPoint") + "AAPL.json?api_key=" + Configuration.getConfigurationValue("quandlApiKey");
 
-        Response response = httpRequest.request(Method.GET, "/WIKI/FB/?api_key=" + api_key);
+        Response response = RestAssured.get(url);
 
         String responseBody = response.getBody().asString();
         LOG.info("Response Body is : " + responseBody);

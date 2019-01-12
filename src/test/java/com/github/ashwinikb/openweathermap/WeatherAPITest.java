@@ -1,5 +1,6 @@
 package com.github.ashwinikb.openweathermap;
 
+import com.github.ashwinikb.Configuration;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
@@ -21,16 +22,12 @@ public class WeatherAPITest {
     @Test
     public void weather() {
 
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk";
+        String openweathermapEndPoint = Configuration.getConfigurationValue("openweathermapEndPoint");
+        String openWeatherMapAppId = Configuration.getConfigurationValue("openWeatherMapAppId");
 
-        //Update with APP ID
-        String appId = "";
+        String url = openweathermapEndPoint + "?q=London,uk" + "&APPID=" + openWeatherMapAppId;
 
-        String finalUrl = "http://api.openweathermap.org/data/2.5/weather?q=London,uk" + "&APPID=" + appId;
-
-        Response response = get(finalUrl);
-
-
+        Response response = get(url);
         ResponseBody body = response.getBody();
         int statusCode = response.getStatusCode();
         String contentType = response.getContentType();
