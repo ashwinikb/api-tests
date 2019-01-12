@@ -1,4 +1,4 @@
-# api-tests
+# API Tests [![Build Status](https://travis-ci.org/ashwinikb/api-tests.svg?branch=master)](https://travis-ci.org/ashwinikb/api-tests/)
 Automation tests for Open Weather Map API's and Quandle's stock quote API's
 
 #### Setup
