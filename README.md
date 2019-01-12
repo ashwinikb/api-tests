@@ -12,5 +12,7 @@
     Quandle API Tests 
         1. Get API KEY from https://docs.quandl.com/
         2. Update quandlApiKey under src/test/rources/configuration.properties
-        
+                
+#### Run
+    mvn clean test
         
